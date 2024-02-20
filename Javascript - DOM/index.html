@@ -1,11 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    #divCor {
+      background-color: grey;
+      width: 200px;
+      height: 200px;
+      text-align: center;
+    }
+  </style>
+
 </head>
+
 <body>
-  
+  <h1>Estudos DOM</h1>
+
+  <h2>Mudar cor do fundo ao clicar</h2>
+  <div id="divCor">
+    <h3 id="texto">Clique aqui</h3>
+  </div>
+
+
+  <script>
+    let a = document.getElementById('divCor');
+    let b = document.getElementById('texto');
+    a.addEventListener('mouseover', mudarCorLoucamente);
+    b.addEventListener('mouseover', mudarCorLoucamente2);
+    function mudarCorLoucamente() {
+      // Função para gerar uma cor aleatória
+      function corAleatoria() {
+        return Math.floor(Math.random() * 256);
+      }
+
+      // Função para atualizar a cor de fundo com uma cor aleatória
+      function atualizarCor() {
+        let red = corAleatoria();
+        let green = corAleatoria();
+        let blue = corAleatoria();
+        let randomColor = `rgb(${red}, ${green}, ${blue})`;
+        a.style.background = randomColor;
+
+      }
+
+      // Atualizar a cor repetidamente a cada 100 milissegundos
+      let intervalo = setInterval(atualizarCor, 100);
+
+      // Parar de mudar a cor quando o mouse sair do elemento
+      a.addEventListener('mouseout', function () {
+        clearInterval(intervalo);
+      });
+    }
+
+    function mudarCorLoucamente2() {
+      // Função para gerar uma cor aleatória
+      function corAleatoria2() {
+        return Math.floor(Math.random() * 256);
+      }
+
+      // Função para atualizar a cor de fundo com uma cor aleatória
+      function atualizarCor2() {
+        let red = corAleatoria2();
+        let green = corAleatoria2();
+        let blue = corAleatoria2();
+        let randomColor2 = `rgb(${red}, ${green}, ${blue})`;
+        b.style.background = randomColor2;
+
+      }
+
+      // Atualizar a cor repetidamente a cada 100 milissegundos
+      let intervalo = setInterval(atualizarCor2, 100);
+
+      // Parar de mudar a cor quando o mouse sair do elemento
+      b.addEventListener('mouseout', function () {
+        clearInterval(intervalo);
+      });
+    }
+
+
+    b.style.color = randomColor2;
+
+  </script>
+
 </body>
+
 </html>
